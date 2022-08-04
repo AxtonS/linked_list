@@ -72,6 +72,18 @@ class LinkedList
       false
     end
   end
+
+  def find(value)
+    index = 0
+    pointer = @head
+    return false if contains?(value) == false
+
+    until pointer.value == value
+      pointer = pointer.next_node
+      index += 1
+    end
+    index
+  end
 end
 
 # Creates elements to be used in linked lists
@@ -93,3 +105,4 @@ p test.contains?(4)
 test.pop
 p test.tail.value
 p test.contains?(4)
+p test.find(2)
