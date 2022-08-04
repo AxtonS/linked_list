@@ -2,9 +2,28 @@
 
 require 'pry-byebug'
 
-class LinkedList; end
+# Holds methods and creates new linked lists
+class LinkedList
+  attr_accessor :head
 
-# Creates elements to be used in the list
+  def initialize(value = nil)
+    @head = Node.new(value)
+  end
+
+  def append(value)
+    pointer = @head
+    pointer = pointer.next_node until pointer.next_node.nil?
+
+    pointer.next_node = Node.new(value)
+  end
+
+  def prepend(value)
+    pointer = @head
+    @head = Node.new(value, next_node = pointer)
+  end
+end
+
+# Creates elements to be used in linked lists
 class Node
   attr_accessor :value, :next_node
 
