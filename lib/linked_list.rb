@@ -56,6 +56,22 @@ class LinkedList
     pointer = pointer.next_node until pointer.next_node.next_node.nil?
     pointer.next_node = nil
   end
+
+  def contains?(value)
+    pointer = @head
+    until pointer.next_node.nil?
+      return true if pointer.value == value
+
+      return false if pointer.next_node.nil?
+
+      pointer = pointer.next_node
+    end
+    if pointer.value == value
+      true
+    else
+      false
+    end
+  end
 end
 
 # Creates elements to be used in linked lists
@@ -73,5 +89,7 @@ test.append(3)
 test.prepend(1)
 test.append(4)
 p test.tail.value
+p test.contains?(4)
 test.pop
 p test.tail.value
+p test.contains?(4)
