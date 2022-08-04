@@ -84,6 +84,17 @@ class LinkedList
     end
     index
   end
+
+  def to_s
+    pointer = @head
+    string = "(#{pointer.value})"
+    until pointer.next_node.nil?
+      pointer = pointer.next_node
+      string << " -> (#{pointer.value})"
+    end
+    string << ' -> nil'
+    string
+  end
 end
 
 # Creates elements to be used in linked lists
@@ -100,9 +111,5 @@ test = LinkedList.new(2)
 test.append(3)
 test.prepend(1)
 test.append(4)
-p test.tail.value
-p test.contains?(4)
 test.pop
-p test.tail.value
-p test.contains?(4)
-p test.find(2)
+p test.to_s
