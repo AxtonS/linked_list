@@ -39,16 +39,22 @@ class LinkedList
     pointer
   end
 
-  def at(index)
+  def index(num)
     counter = 0
     pointer = @head
-    while counter < index
+    while counter < num
       return nil if pointer.next_node.nil?
 
       pointer = pointer.next_node
       counter += 1
     end
     pointer
+  end
+
+  def pop
+    pointer = @head
+    pointer = pointer.next_node until pointer.next_node.next_node.nil?
+    pointer.next_node = nil
   end
 end
 
@@ -65,9 +71,7 @@ end
 test = LinkedList.new(2)
 test.append(3)
 test.prepend(1)
-p test.head.value
-p test.head.next_node.value
-p test.head.next_node.next_node.value
-p test.size
-p test.tail
-p test.at(0)
+test.append(4)
+p test.tail.value
+test.pop
+p test.tail.value
