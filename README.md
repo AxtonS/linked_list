@@ -16,3 +16,6 @@ Learning linked list in ruby
 -Build a to_string method that represents the linked list as a string in format '( value ) -> ( value ) -> nil'  
 -Build insert_at method that inserts a new node with given value and index  
 -Build remove_at method that removes node at the given index  
+
+## Finished  
+-stylistically decided to have index arguments that are passed values below or beyond the scope of the list to work on the head or tail as opposed to looping like an array  
