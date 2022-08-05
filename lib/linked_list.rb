@@ -96,15 +96,25 @@ class LinkedList
     string
   end
 
-  def insert_at(value, num)
-    if num > size - 1
+  def insert_at(value, index)
+    if index > size - 1
       append(value)
       return
-    elsif num < 1
+    elsif index < 1
       prepend(value)
       return
     else
-      index(num - 1).next_node = Node.new(value, index(num))
+      index(index - 1).next_node = Node.new(value, index(index))
+    end
+  end
+
+  def remove_at(index)
+    if index < 1
+      @head = @head.next_node
+    elsif index > size - 1
+      index(size - 1).next_node = nil
+    else
+      index(index - 1).next_node = index(index + 1)
     end
   end
 end
@@ -118,11 +128,3 @@ class Node
     @next_node = next_node
   end
 end
-
-test = LinkedList.new(2)
-test.append(3)
-test.prepend(1)
-test.append(4)
-test.pop
-test.insert_at(9, 2)
-p test.to_s
