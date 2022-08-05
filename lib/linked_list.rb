@@ -95,6 +95,18 @@ class LinkedList
     string << ' -> nil'
     string
   end
+
+  def insert_at(value, num)
+    if num > size - 1
+      append(value)
+      return
+    elsif num < 1
+      prepend(value)
+      return
+    else
+      index(num - 1).next_node = Node.new(value, index(num))
+    end
+  end
 end
 
 # Creates elements to be used in linked lists
@@ -112,4 +124,5 @@ test.append(3)
 test.prepend(1)
 test.append(4)
 test.pop
+test.insert_at(9, 2)
 p test.to_s
